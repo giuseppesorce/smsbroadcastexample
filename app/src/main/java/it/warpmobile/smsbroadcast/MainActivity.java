@@ -24,11 +24,11 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener{
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-
+    //TODO edit this array and change cellnumber
     private String[] cellNumber = {"12345678", "1234567", "1234567"};
-     private EditText etMessage;
+    private EditText etMessage;
     private int counterMessage;
     private String SENT = "SMS_SENT";
     private SmsBroadCast broadCast;
@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private void setupViews() {
 
-       btSend.setOnClickListener(this);
+        btSend.setOnClickListener(this);
 
     }
 
@@ -70,7 +70,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         String message = etMessage.getText().toString();
         if (message != null && message.length() > 5) {
             btSend.setEnabled(false);
-            counterError=0;
+            counterError = 0;
             counterMessage = 0;
             sendSms();
         } else {
@@ -100,7 +100,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View v) {
-        if(v.getId()== R.id.btSend){
+        if (v.getId() == R.id.btSend) {
             startSendMessage();
         }
     }
@@ -152,7 +152,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private void nextMessage() {
 
         counterMessage++;
-        tvReport.setText("Sms sended: "+counterMessage+"/"+cellNumber.length+"\nError: "+counterError);
+        tvReport.setText("Sms sended: " + counterMessage + "/" + cellNumber.length + "\nError: " + counterError);
         if (counterMessage >= cellNumber.length) {
             Toast.makeText(getApplicationContext(), "Tutti gli sms sono stati inviati", Toast.LENGTH_SHORT).show();
             btSend.setEnabled(true);
